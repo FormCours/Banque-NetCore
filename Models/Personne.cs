@@ -13,42 +13,30 @@ namespace Models
         #region Prop
         public string Nom
         {
-            get
-            {
-                return _Nom;
-            }
+            get { return _Nom; }
 
-            set
-            {
-                _Nom = value;
-            }
+            set { _Nom = value; }
         }
 
         public string Prenom
         {
-            get
-            {
-                return _Prenom;
-            }
+            get { return _Prenom; }
 
-            set
-            {
-                _Prenom = value;
-            }
+            set { _Prenom = value; }
+        }
+
+        public string NomComplet
+        {
+            get { return $"{Prenom} {Nom}"; }
         }
 
         public DateTime DateNaiss
         {
-            get
-            {
-                return _DateNaiss;
-            }
+            get { return _DateNaiss; }
 
-            set
-            {
-                _DateNaiss = value;
-            }
+            set { _DateNaiss = value; }
         }
+
         #endregion
 
     }
