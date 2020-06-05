@@ -8,5 +8,7 @@ namespace GestBanque
     {
         public string Message { get; set; }
         public int Number { get; set; }
+
+        public double Reel { get; } = 3.14;
     }
 }
