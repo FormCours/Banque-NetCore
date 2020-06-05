@@ -7,5 +7,6 @@ namespace GestBanque
     class DemoGit
     {
         public string Message { get; set; }
+        public int Number { get; set; }
     }
 }
