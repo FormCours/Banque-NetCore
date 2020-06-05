@@ -28,6 +28,23 @@ namespace GestBanque
             c1.Retrait(300);
             AfficherCompte(c1);
 
+            //--------------------------------------------------
+            Banque banque = new Banque();
+            banque.Nom = "ConfitBanque";
+            banque.Ajouter(c1);
+
+            Courant c2 = new Courant()
+            {
+                Numero = "BE00002",
+                Titulaire = p1,
+                LigneDeCredit = 0
+            };
+            c2.Depot(50);
+
+            banque.Ajouter(c2);
+
+            Courant cZaza01 = banque["BE00001"];
+            AfficherCompte(cZaza01);
         }
 
         private static void AfficherCompte(Courant c)
