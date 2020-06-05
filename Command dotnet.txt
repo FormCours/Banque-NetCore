@@ -1,0 +1,15 @@
+cd *Repertoire cible*
+
+dotnet new solution -o GestBanque
+
+cd GestBanque
+
+dotnet new -h //Pour voir les templates disponible
+
+dotnet new console -o GestBanque
+dotnet sln add GestBanque
+
+dotnet new classlib -o Models
+dotnet sln add Models
+
+dotnet add GestBanque reference Models
