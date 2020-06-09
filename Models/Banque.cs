@@ -7,18 +7,18 @@ namespace Models
     public class Banque
     {
         #region Champs
-        private Dictionary<string, Courant> _Comptes;
+        private Dictionary<string, Compte> _Comptes;
         #endregion
 
         #region Props
         public string Nom { get; set; }
-        private Dictionary<string, Courant> Comptes
+        private Dictionary<string, Compte> Comptes
         {
             get 
             {
                 if(_Comptes is null)
                 {
-                    _Comptes = new Dictionary<string, Courant>();
+                    _Comptes = new Dictionary<string, Compte>();
                 }
 
                 return _Comptes;
@@ -27,18 +27,18 @@ namespace Models
         #endregion
 
         #region Indexeur
-        public Courant this[string numero]
+        public Compte this[string numero]
         {
             get
             {
-                Comptes.TryGetValue(numero, out Courant c);
+                Comptes.TryGetValue(numero, out Compte c);
                 return c;
             }
         }
         #endregion
 
         #region Methode
-        public void Ajouter(Courant compte)
+        public void Ajouter(Compte compte)
         {
             if(compte is null || Comptes.ContainsKey(compte.Numero))
             {
@@ -58,7 +58,7 @@ namespace Models
         {
             double avoir = 0.0;
 
-            foreach(Courant c in _Comptes.Values)
+            foreach(Compte c in _Comptes.Values)
             {
                 if(c.Titulaire == p) avoir += c;
             }

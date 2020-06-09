@@ -40,6 +40,7 @@ namespace GestBanque
             Banque banque = new Banque();
             banque.Nom = "ConfitBanque";
             banque.Ajouter(c1);
+            banque.Ajouter(e1);
 
             Courant c2 = new Courant()
             {
@@ -51,8 +52,8 @@ namespace GestBanque
 
             banque.Ajouter(c2);
 
-            Courant cZaza01 = banque["BE00001"];
-            AfficherCompte(cZaza01);
+            
+            AfficherCompte(e1);
 
             Console.WriteLine("Avoir des comptes de {0} : {1}", p1.Nom, banque.AvoirDesComptes(p1));
         }
