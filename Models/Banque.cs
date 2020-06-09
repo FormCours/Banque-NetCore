@@ -53,6 +53,18 @@ namespace Models
         {
             Comptes.Remove(numero);
         }
+
+        public double AvoirDesComptes(Personne p)
+        {
+            double avoir = 0.0;
+
+            foreach(Courant c in _Comptes.Values)
+            {
+                if(c.Titulaire == p) avoir += c;
+            }
+
+            return avoir; 
+        }
         #endregion
     }
 }

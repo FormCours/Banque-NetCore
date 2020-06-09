@@ -4,19 +4,19 @@ using System.Text;
 
 namespace Models
 {
-    public class Courant
+    public class Courant : Compte
     {
+       
+
         #region Champs
         private double _LigneDeCredit;
        // private double _Solde;
         #endregion
 
         #region Propriété
-        public string Numero { get; set; }
+       
         //public double Solde { get { return _Solde; }  } 
         //↑ Prop sans setter mais avec le champs accessible
-
-        public double Solde { get; private set; }
 
         public double LigneDeCredit
         {
@@ -33,36 +33,13 @@ namespace Models
             }
         }
 
-        public Personne Titulaire { get; set; }
+       
         #endregion
 
         #region Methode
-        public void Retrait(double montant)
+        public override void Retrait(double montant)
         {
-            if(montant <= 0 )
-            {
-                // TODO Erreur Argument montant negatif
-                return;
-            }
-
-            if(Solde - montant < -LigneDeCredit)
-            {
-                // TODO Erreur Ligne de credit!!!
-                return;
-            }
-
-            Solde = Solde - montant;
-        }
-
-        public void Depot(double montant)
-        {
-            if (montant <= 0)
-            {
-                // TODO Erreur Argument montant negatif
-                return;
-            }
-
-            Solde = Solde + montant;
+            Retrait(montant, LigneDeCredit);
         }
         #endregion
 

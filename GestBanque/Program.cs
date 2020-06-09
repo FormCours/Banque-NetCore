@@ -7,6 +7,7 @@ namespace GestBanque
     {
         static void Main(string[] args)
         {
+
             Console.WriteLine("Start Exo!");
 
             Personne p1 = new Personne();
@@ -28,6 +29,13 @@ namespace GestBanque
             c1.Retrait(300);
             AfficherCompte(c1);
 
+            Epargne e1 = new Epargne();
+            e1.Numero = "BE00003";
+            e1.Titulaire = p1;
+            e1.Depot(200);
+
+            AfficherCompte(e1);
+
             //--------------------------------------------------
             Banque banque = new Banque();
             banque.Nom = "ConfitBanque";
@@ -45,9 +53,11 @@ namespace GestBanque
 
             Courant cZaza01 = banque["BE00001"];
             AfficherCompte(cZaza01);
+
+            Console.WriteLine("Avoir des comptes de {0} : {1}", p1.Nom, banque.AvoirDesComptes(p1));
         }
 
-        private static void AfficherCompte(Courant c)
+        private static void AfficherCompte(Compte c)
         {
             Console.WriteLine($"{c.Numero} {c.Solde} - {c.Titulaire.NomComplet} ");
             Console.WriteLine();
