@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Models
 {
-    public abstract class Compte
+    public abstract class Compte : IBanker, ICustomer
     {
 		#region Surcharge
 		public static double operator +(double Solde, Compte c)
@@ -37,7 +37,9 @@ namespace Models
 			set { _Titulaire = value; }
 		}
 
-		public void Depot(double Montant)
+        public int LigneDeCredit { get; set; }
+
+        public void Depot(double Montant)
 		{
 			if (Montant <= 0)
 				return; //TODO Gérer l'exception

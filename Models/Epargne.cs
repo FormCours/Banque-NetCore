@@ -33,7 +33,6 @@ namespace Models
         {
             return Solde * .045;
         }
-
-        
+                
     }
 }
