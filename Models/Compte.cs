@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Models
 {
-    public class Compte
+    public abstract class Compte
     {
 		#region Surcharge
 		public static double operator +(double Solde, Compte c)
@@ -66,5 +66,13 @@ namespace Models
 
 			Solde = Solde - montant;
 		}
+
+		// Lesson: Abstract
+		protected abstract double CalculInteret();
+
+        public void AppliquerInteret()
+        {
+            this._Solde += CalculInteret();
+        }
 	}
 }

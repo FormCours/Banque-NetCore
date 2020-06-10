@@ -28,6 +28,12 @@ namespace Models
 
         }
 
+        // Lesson: Abstract
+        protected override double CalculInteret()
+        {
+            return Solde * .045;
+        }
+
         
     }
 }

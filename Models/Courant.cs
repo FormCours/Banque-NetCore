@@ -43,5 +43,11 @@ namespace Models
         }
         #endregion
 
+        // Lesson: Abstract
+        protected override double CalculInteret()
+        {
+            return (Solde < 0) ? Solde * .0975 : Solde * .03;
+        }
+
     }
 }
