@@ -6,21 +6,10 @@ namespace Models
 {
     public class Courant : Compte
     {
-       
-
-        #region Champs
-        private double _LigneDeCredit;
-       // private double _Solde;
-        #endregion
-
         #region Propriété
-       
-        //public double Solde { get { return _Solde; }  } 
-        //↑ Prop sans setter mais avec le champs accessible
-
-        public double LigneDeCredit
+        public override double LigneDeCredit
         {
-            get { return _LigneDeCredit; }
+            get { return base.LigneDeCredit; }
             set
             {
                 if (value < 0)
@@ -29,7 +18,7 @@ namespace Models
                     return;
                 }
 
-                _LigneDeCredit = value;
+                base.LigneDeCredit = value;
             }
         }
 

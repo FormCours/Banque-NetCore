@@ -11,7 +11,7 @@ namespace Models
         string Numero { get; }
         Personne Titulaire { get; }
 
-        int LigneDeCredit {get;set;}
+        double LigneDeCredit {get;set;}
         
         void AppliquerInteret();
     }

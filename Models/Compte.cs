@@ -6,14 +6,9 @@ namespace Models
 {
     public abstract class Compte : IBanker, ICustomer
     {
-		#region Surcharge
-		public static double operator +(double Solde, Compte c)
-		{
-			return Solde + ((c.Solde < 0.0) ? 0.0 : c.Solde);
-		}
-		#endregion
-
 		private string _Numero;
+		private double _Solde;
+		private Personne _Titulaire;
 
 		public string Numero
 		{
@@ -21,15 +16,11 @@ namespace Models
 			set { _Numero = value; }
 		}
 
-		private double _Solde;
-
 		public double Solde
 		{
 			get { return _Solde; }
 			private set { _Solde = value; }
 		}
-
-		private Personne _Titulaire;
 
 		public Personne Titulaire
 		{
@@ -37,7 +28,8 @@ namespace Models
 			set { _Titulaire = value; }
 		}
 
-        public int LigneDeCredit { get; set; }
+        public virtual double LigneDeCredit { get; set; }
+
 
         public void Depot(double Montant)
 		{
@@ -76,5 +68,13 @@ namespace Models
         {
             this._Solde += CalculInteret();
         }
+
+
+		#region Surcharge
+		public static double operator +(double Solde, Compte c)
+		{
+			return Solde + ((c.Solde < 0.0) ? 0.0 : c.Solde);
+		}
+		#endregion
 	}
 }
