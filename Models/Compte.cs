@@ -41,9 +41,6 @@ namespace Models
 			private set { _Titulaire = value; }
 		}
 
-        public abstract double LigneDeCredit { get; set; }
-
-
         public void Depot(double Montant)
 		{
 			if (Montant <= 0)
@@ -54,15 +51,20 @@ namespace Models
 
 		public virtual void Retrait(double montant)
 		{
+			InternalRetrait(montant);
+		}
+
+		protected void InternalRetrait(double montant, double limite = 0)
+		{
 			if (montant <= 0)
 			{
 				// TODO Erreur Argument montant negatif
 				return;
 			}
 
-			if (Solde - montant < -LigneDeCredit)
+			if(montant - Solde < limite)
 			{
-				// TODO Erreur Ligne de credit!!!
+				// TODO Erreur
 				return;
 			}
 

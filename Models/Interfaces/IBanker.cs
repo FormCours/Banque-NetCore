@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +11,8 @@ namespace Models
         string Numero { get; }
         Personne Titulaire { get; }
 
-        double LigneDeCredit { get; set; }
+        // NB: Exercice 4 du chapitre des interfaces
+        //double LigneDeCredit { get; set; }
         
         void AppliquerInteret();
     }

@@ -28,13 +28,6 @@ namespace Models
             set { _DernierRetrait = value; }
         }
 
-        public override double LigneDeCredit
-        {
-            get { return 0; }
-            set { /* On ne fait rien */ }
-        }
-
-
         public override void Retrait(double Montant)
         {
             double AncienSolde = Solde;

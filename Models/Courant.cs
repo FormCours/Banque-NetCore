@@ -30,7 +30,7 @@ namespace Models
         #endregion
 
         #region Propriété
-        public override double LigneDeCredit
+        public double LigneDeCredit
         {
             get { return _LigneDeCredit; }
             set
@@ -47,6 +47,18 @@ namespace Models
         #endregion
 
         #region Methode
+        public override void Retrait(double montant)
+        {
+            if (Solde - montant < -LigneDeCredit)
+            {
+                // TODO Erreur Ligne de credit!!!
+                return;
+            }
+
+            base.Retrait(montant);
+        }
+
+
         // Lesson: Abstract
         protected override double CalculInteret()
         {
