@@ -1,4 +1,5 @@
 ﻿using Models;
+using Models.Exceptions;
 using System;
 
 namespace GestBanque
@@ -20,7 +21,7 @@ namespace GestBanque
             c1.LigneDeCredit = 200;
             AfficherCompte(c1);
 
-            c1.Retrait(250);
+            c1.Retrait(100);
             AfficherCompte(c1);
 
             c1.Retrait(300);
@@ -40,6 +41,15 @@ namespace GestBanque
 
             Courant c2 = new Courant("BE00002", p1, 0);
             c2.Depot(50);
+
+            try
+            {
+                c2.Retrait(1_000_000);
+            }
+            catch(SoldeInsuffisantException)
+            {
+                Console.WriteLine("Boulet !");
+            }
 
             banque.Ajouter(c2);
 

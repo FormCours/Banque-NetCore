@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Models.Exceptions;
 
 namespace Models
 {
@@ -43,8 +44,8 @@ namespace Models
 
         public void Depot(double Montant)
 		{
-			if (Montant <= 0)
-				return; //TODO Gérer l'exception
+			if (!(Montant > 0))
+				throw new ArgumentOutOfRangeException();
 
 			Solde += Montant;
 		}
@@ -57,16 +58,10 @@ namespace Models
 		protected void InternalRetrait(double montant, double limite = 0)
 		{
 			if (montant <= 0)
-			{
-				// TODO Erreur Argument montant negatif
-				return;
-			}
+				throw new ArgumentOutOfRangeException();
 
-			if(montant - Solde < limite)
-			{
-				// TODO Erreur
-				return;
-			}
+			if (Solde - montant < limite)
+				throw new SoldeInsuffisantException(montant, Solde, limite);
 
 			Solde = Solde - montant;
 		}

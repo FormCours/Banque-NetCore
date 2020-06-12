@@ -37,8 +37,7 @@ namespace Models
             {
                 if (value < 0)
                 {
-                    //TODO Generer une erreur
-                    return;
+                    throw new InvalidOperationException("La ligne de credit doit être superieur à 0!");
                 }
 
                 _LigneDeCredit = value;
@@ -49,13 +48,7 @@ namespace Models
         #region Methode
         public override void Retrait(double montant)
         {
-            if (Solde - montant < -LigneDeCredit)
-            {
-                // TODO Erreur Ligne de credit!!!
-                return;
-            }
-
-            base.Retrait(montant);
+            base.InternalRetrait(montant, -LigneDeCredit);
         }
 
 
