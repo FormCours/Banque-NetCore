@@ -10,10 +10,23 @@ namespace Models
 		private double _Solde;
 		private Personne _Titulaire;
 
+		public Compte(string numero, Personne titulaire)
+		{
+			this.Numero = numero;
+			this.Titulaire = titulaire;
+			this.Solde = 0;
+		}
+
+		public Compte(string numero, Personne titulaire, double solde)
+			: this(numero, titulaire)
+		{
+			this.Solde = 0;
+		}
+
 		public string Numero
 		{
 			get { return _Numero; }
-			set { _Numero = value; }
+			private set { _Numero = value; }
 		}
 
 		public double Solde
@@ -25,10 +38,10 @@ namespace Models
 		public Personne Titulaire
 		{
 			get { return _Titulaire; }
-			set { _Titulaire = value; }
+			private set { _Titulaire = value; }
 		}
 
-        public virtual double LigneDeCredit { get; set; }
+        public abstract double LigneDeCredit { get; set; }
 
 
         public void Depot(double Montant)
@@ -39,12 +52,7 @@ namespace Models
 			Solde += Montant;
 		}
 
-		public virtual void Retrait(double Montant)
-		{
-			Retrait(Montant, 0.0);
-		}
-
-		public void Retrait(double montant, double LigneDeCredit)
+		public virtual void Retrait(double montant)
 		{
 			if (montant <= 0)
 			{

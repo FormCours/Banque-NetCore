@@ -15,11 +15,9 @@ namespace GestBanque
             p1.Nom = "Vanderquack";
             p1.DateNaiss = new DateTime(2010, 01, 06);
 
-            Courant c1 = new Courant();
-            c1.Numero = "BE00001";
-            c1.Titulaire = p1;
-            c1.LigneDeCredit = 100;
+            Courant c1 = new Courant("BE00001", p1, 100);
             c1.Depot(500);
+            c1.LigneDeCredit = 200;
             AfficherCompte(c1);
 
             c1.Retrait(250);
@@ -29,9 +27,7 @@ namespace GestBanque
             c1.Retrait(300);
             AfficherCompte(c1);
 
-            Epargne e1 = new Epargne();
-            e1.Numero = "BE00003";
-            e1.Titulaire = p1;
+            Epargne e1 = new Epargne("BE00003", p1);
             e1.Depot(200);
 
             AfficherCompte(e1);
@@ -42,12 +38,7 @@ namespace GestBanque
             banque.Ajouter(c1);
             banque.Ajouter(e1);
 
-            Courant c2 = new Courant()
-            {
-                Numero = "BE00002",
-                Titulaire = p1,
-                LigneDeCredit = 0
-            };
+            Courant c2 = new Courant("BE00002", p1, 0);
             c2.Depot(50);
 
             banque.Ajouter(c2);
