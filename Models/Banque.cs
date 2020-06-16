@@ -45,12 +45,16 @@ namespace Models
                 //TODO Envoyé une erreur
                 return;
             }
-
+            compte.PassageEnNegatifEvent += PassageEnNegatifAction;
             Comptes.Add(compte.Numero, compte);
         }
 
         public void Supprimer(string numero)
         {
+            if (!Comptes.ContainsKey(numero))
+                //TODO Envoyé une erreur
+                return;
+            this[numero].PassageEnNegatifEvent -= PassageEnNegatifAction;
             Comptes.Remove(numero);
         }
 
@@ -64,6 +68,11 @@ namespace Models
             }
 
             return avoir; 
+        }
+
+        private void PassageEnNegatifAction(Compte compte)
+        {
+            Console.WriteLine($"Le compte {compte.Numero} vient de passer en négatif({compte.Solde}).");
         }
         #endregion
     }

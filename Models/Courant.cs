@@ -48,7 +48,12 @@ namespace Models
         #region Methode
         public override void Retrait(double montant)
         {
+            bool isNegative = Solde < 0 ;
             base.InternalRetrait(montant, -LigneDeCredit);
+            if (!isNegative && Solde < 0)
+            {
+                RaisePassageEnNegatifEvent(this);
+            }
         }
 
 

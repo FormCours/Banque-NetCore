@@ -57,6 +57,9 @@ namespace GestBanque
             AfficherCompte(e1);
 
             Console.WriteLine("Avoir des comptes de {0} : {1}", p1.Nom, banque.AvoirDesComptes(p1));
+
+            c2.LigneDeCredit = 500;
+            c2.Retrait(100);
         }
 
         private static void AfficherCompte(Compte c)

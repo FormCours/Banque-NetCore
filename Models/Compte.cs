@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Models.Delegates;
 using Models.Exceptions;
 
 namespace Models
@@ -11,17 +12,20 @@ namespace Models
 		private double _Solde;
 		private Personne _Titulaire;
 
+		public event PassageEnNegatifDelegate PassageEnNegatifEvent = null;
+
 		public Compte(string numero, Personne titulaire)
+			: this(numero, titulaire,0)
 		{
-			this.Numero = numero;
-			this.Titulaire = titulaire;
-			this.Solde = 0;
+
 		}
 
 		public Compte(string numero, Personne titulaire, double solde)
-			: this(numero, titulaire)
 		{
-			this.Solde = 0;
+			this.Numero = numero;
+			this.Titulaire = titulaire;
+			this.Solde = solde;
+			//PassageEnNegatifEvent += Banque.PassageEnNegatifAction; //Ok, seulement si la méthode est public et static!
 		}
 
 		public string Numero
@@ -74,6 +78,10 @@ namespace Models
             this._Solde += CalculInteret();
         }
 
+		protected void RaisePassageEnNegatifEvent(Compte compte)
+		{
+			PassageEnNegatifEvent?.Invoke(compte);
+		}
 
 		#region Surcharge
 		public static double operator +(double Solde, Compte c)
