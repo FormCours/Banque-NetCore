@@ -12,7 +12,8 @@ namespace Models
 		private double _Solde;
 		private Personne _Titulaire;
 
-		public event PassageEnNegatifDelegate PassageEnNegatifEvent = null;
+		//public event PassageEnNegatifDelegate PassageEnNegatifEvent = null;
+		public event Action<Compte> PassageEnNegatifEvent = null;
 
 		public Compte(string numero, Personne titulaire)
 			: this(numero, titulaire,0)
